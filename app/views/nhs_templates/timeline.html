@@ -1,0 +1,98 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+{{ summary.nhsNumber }} - Timeline
+{% endblock %}
+
+{% block beforeContent %}
+<div class="govuk-breadcrumbs">
+    <ol class="govuk-breadcrumbs__list">
+        <li class="govuk-breadcrumbs__list-item">
+            <a class="govuk-breadcrumbs__link" href="/home">Home</a>
+        </li>
+        <li class="govuk-breadcrumbs__list-item">
+            <a class="govuk-breadcrumbs__link" href="summary">NHS number: {{ summary.nhsNumber }}</a>
+        </li>
+        <li class="govuk-breadcrumbs__list-item">
+            <a class="govuk-breadcrumbs__link">Timeline</a>
+        </li>
+    </ol>
+</div>
+{% endblock %}
+
+
+{% block content %}
+<main>
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-one-quarter">
+            &nbsp;
+        </div>
+        <div class="govuk-grid-column-three-quarters">
+            <h1 class="govuk-heading-xl">
+                <span class="govuk-caption-xl">Timeline</span>
+                NHS: {{summary.nhsNumber }}
+            </h1>
+        </div>
+    </div>
+    <div class="govuk-grid-row">
+
+        <nav class="govuk-grid-column-one-quarter">
+            <ul class="govuk-list">
+                <li>
+                    <a class="govuk-link" href="summary">Summary</a>
+                </li>
+                <li>
+                    <a class="govuk-link" href="supermarkets">Supermarkets</a>
+                </li>
+                <li>
+                    <a class="govuk-link" href="deliveries">Deliveries</a>
+                </li>
+                <li>
+                    Timeline
+                </li>
+            </ul>
+        </nav>
+        <div class="govuk-grid-column-three-quarters">
+            <div class="govuk-accordion" data-module="govuk-accordion" id="accordion-with-summary-sections">
+                {% for event in timeline %}
+                <div class="govuk-accordion__section ">
+                    <div class="govuk-accordion__section-header">
+                        <h2 class="govuk-accordion__section-heading">
+                                <span class="govuk-accordion__section-button"
+                                      id="accordion-with-summary-sections-heading-1">
+                                  {{ event.date }} - {{ event.event }}
+                                </span>
+                        </h2>
+                        <div class="govuk-accordion__section-summary govuk-body"
+                             id="accordion-with-summary-sections-summary-1">
+                            {% if event.badge %}
+                            <p>{{ event.description }}</p>
+                            <div class="govuk-tag {% if event.badge.inverted %}govuk-tag--grey{% endif %}">{{
+                                event.badge.text }}
+                            </div>
+                            {% else %}
+                            {{ event.description }}
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div id="accordion-with-summary-sections-content-1" class="govuk-accordion__section-content"
+                         aria-labelledby="accordion-with-summary-sections-heading-1">
+                        <table class="govuk-table govuk-!-margin-bottom-6">
+                            <tbody class="govuk-table__body">
+                            {% for row in event.eventDetails %}
+                            <tr class="govuk-table__row">
+                                <th scope="row" class="govuk-table__header">{{ row.field }}</th>
+                                <td class="govuk-table__cell">{{ row.value }}</td>
+                            </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div
+                </div>
+                {% endfor %}
+
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}

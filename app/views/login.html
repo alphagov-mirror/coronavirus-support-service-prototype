@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Sign in - SVP Support Toolkit
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row govuk-!-margin-bottom-9">
+    <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-xl">Sign in</h1>
+		<p>This page is a placeholder - no account details are needed for this prototype</p>
+
+
+        <form class="form" action="/home" method="post">
+
+            <div class="govuk-form-group">
+                <label class="govuk-label" for="username">
+                    Username or email
+                </label>
+                <input class="govuk-input govuk-input--width-20" id="username" name="username" type="text">
+            </div>
+
+
+            <div class="govuk-form-group">
+                <label class="govuk-label" for="password">
+                    Password
+                </label>
+                <input class="govuk-input govuk-input--width-20" id="password" name="password" type="password">
+            </div>
+
+            <button class="govuk-button" data-module="govuk-button">
+                Continue
+            </button>
+
+        </form>
+        <div>
+            <a href="#" class="govuk-link govuk-body">Forgotten your password?</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

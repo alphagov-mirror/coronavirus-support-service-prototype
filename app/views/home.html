@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Find a user - SVP Support Toolkit
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row govuk-!-margin-bottom-9">
+    <div class="govuk-grid-column-two-thirds">
+
+
+        <form class="form" action="/find" method="post">
+            <div class="govuk-form-group">
+                <h1 class="govuk-label-wrapper"><label class="govuk-label govuk-label--l" for="nhs_number">
+                    Enter an nhs number
+                </label></h1>
+                <span id="nhs_number-hint" class="govuk-hint">
+                  For example, 9730412414, 0111053029 or 2082035560
+                </span>
+
+                {% if error %}
+                <span id="nhs_number-error" class="govuk-error-message">
+                  <span class="govuk-visually-hidden">Error:</span> {{ error }}
+                </span>
+                {% endif %}
+                <input class="govuk-input govuk-input--width-20" id="nhs_number" name="nhs_number" type="text">
+            </div>
+
+            <button class="govuk-button" data-module="govuk-button">
+                Continue
+            </button>
+
+        </form>
+        <div>
+            <a href="#" class="govuk-link govuk-body">I don't know their NHS number</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

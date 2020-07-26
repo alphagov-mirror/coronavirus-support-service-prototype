@@ -1,0 +1,117 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+NHS: {{ summary.nhsNumber }} - SVP Support Toolkit
+{% endblock %}
+
+{% block beforeContent %}
+<div class="govuk-breadcrumbs">
+    <ol class="govuk-breadcrumbs__list">
+        <li class="govuk-breadcrumbs__list-item">
+            <a class="govuk-breadcrumbs__link" href="/home">Home</a>
+        </li>
+        <li class="govuk-breadcrumbs__list-item">
+            <a class="govuk-breadcrumbs__link">NHS number: {{ summary.nhsNumber }}</a>
+        </li>
+    </ol>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-one-quarter">
+        &nbsp;
+    </div>
+    <div class="govuk-grid-column-three-quarters">
+        <h1 class="govuk-heading-xl">
+            <span class="govuk-caption-xl">Supermarket matches</span>
+            NHS: {{summary.nhsNumber }}
+        </h1>
+    </div>
+</div>
+<div class="govuk-grid-row">
+    <nav class="govuk-grid-column-one-quarter">
+        <ul class="govuk-list">
+            <li>
+                <a class="govuk-link">Summary</a>
+            </li>
+            <li>
+                <a class="govuk-link" href="supermarkets">Supermarkets</a>
+            </li>
+            <li>
+                <a class="govuk-link" href="deliveries">Deliveries</a>
+            </li>
+            <li>
+                <a class="govuk-link" href="timeline">Timeline</a>
+            </li>
+        </ul>
+    </nav>
+    <div class="govuk-grid-column-three-quarters">
+
+
+        <section class="govuk-!-margin-bottom-9">
+            <dl class="govuk-summary-list">
+                <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">
+                        Name
+                    </dt>
+                    <dd class="govuk-summary-list__value">
+                        {{ summary.name }}
+                    </dd>
+                </div>
+                <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">
+                        Date of birth
+                    </dt>
+                    <dd class="govuk-summary-list__value">
+                        {{ summary.dob }}
+                    </dd>
+                </div>
+                <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">
+                        Latest address
+                    </dt>
+                    <dd class="govuk-summary-list__value">
+                        {% for line in summary.latestAddress %}
+                        {{ line }}{% if not loop.last %}<br/>{% endif %}
+                        {% endfor %}
+                    </dd>
+                </div>
+                <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">
+                        Address from NHS
+                    </dt>
+                    <dd class="govuk-summary-list__value">
+                        {% for line in summary.nhsAddress %}
+                        {{ line }}{% if not loop.last %}<br/>{% endif %}
+                        {% endfor %}
+                    </dd>
+                </div>
+                <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">
+                        Contact details
+                    </dt>
+                    <dd class="govuk-summary-list__value">
+                        {% if summary.phone %} <p class="govuk-body">{{ summary.phone }}</p> {% endif %}
+                        <p class="govuk-body">{{ summary.email }}</p>
+                    </dd>
+                </div>
+            </dl>
+        </section>
+
+        <section class="govuk-!-margin-bottom-9">
+            <h2 class="govuk-heading-m">Summary</h2>
+            <span id="record-summary-hint" class="govuk-hint">
+                This quick summary can be used to attach to support tickets.
+              </span>
+            <textarea class="govuk-textarea"
+                      id="record-summary"
+                      name="record-summary"
+                      rows="12"
+                      aria-describedby="record-summary-hint">{% for line in summary.text %}{{ line }}{% if not loop.last %}&#13;&#10;{% endif %}{% endfor %}
+            </textarea>
+        </section>
+    </div>
+</div>
+
+{% endblock %}
