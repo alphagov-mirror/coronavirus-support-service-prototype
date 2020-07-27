@@ -46,6 +46,12 @@
     serviceUrl: "/",
     containerClasses: "govuk-width-container"
   }) }}
+
+{% endblock %}
+
+{% block beforeContent %}
+  {% include "includes/phase-banner.html" %}
+  {% block beforeAppContent %}{% endblock %}
 {% endblock %}
 
 {% set mainClasses = mainClasses | default("govuk-main-wrapper--auto-spacing") %}
