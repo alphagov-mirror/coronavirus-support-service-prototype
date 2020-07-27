@@ -39,10 +39,10 @@
                 <a class="govuk-link" href="summary">Summary</a>
             </li>
             <li>
-                Supermarkets
+                <a class="govuk-link" href="supermarkets">Supermarkets</a>
             </li>
             <li>
-                <a class="govuk-link" href="deliveries">Deliveries</a>
+                Deliveries
             </li>
             <li>
                 <a class="govuk-link" href="timeline">Timeline</a>
@@ -50,57 +50,6 @@
         </ul>
     </nav>
     <div class="govuk-grid-column-three-quarters">
-
-
-        <section class="govuk-!-margin-bottom-9">
-            <dl class="govuk-summary-list">
-                <div class="govuk-summary-list__row">
-                    <dt class="govuk-summary-list__key">
-                        Name
-                    </dt>
-                    <dd class="govuk-summary-list__value">
-                        {{ summary.name }}
-                    </dd>
-                </div>
-                <div class="govuk-summary-list__row">
-                    <dt class="govuk-summary-list__key">
-                        Date of birth
-                    </dt>
-                    <dd class="govuk-summary-list__value">
-                        {{ summary.dob }}
-                    </dd>
-                </div>
-                <div class="govuk-summary-list__row">
-                    <dt class="govuk-summary-list__key">
-                        Latest address
-                    </dt>
-                    <dd class="govuk-summary-list__value">
-                        {% for line in summary.latestAddress %}
-                        {{ line }}{% if not loop.last %}<br/>{% endif %}
-                        {% endfor %}
-                    </dd>
-                </div>
-                <div class="govuk-summary-list__row">
-                    <dt class="govuk-summary-list__key">
-                        Address from NHS
-                    </dt>
-                    <dd class="govuk-summary-list__value">
-                        {% for line in summary.nhsAddress %}
-                        {{ line }}{% if not loop.last %}<br/>{% endif %}
-                        {% endfor %}
-                    </dd>
-                </div>
-                <div class="govuk-summary-list__row">
-                    <dt class="govuk-summary-list__key">
-                        Contact details
-                    </dt>
-                    <dd class="govuk-summary-list__value">
-                        {% if summary.phone %} <p class="govuk-body">{{ summary.phone }}</p> {% endif %}
-                        <p class="govuk-body">{{ summary.email }}</p>
-                    </dd>
-                </div>
-            </dl>
-        </section>
 
         <section  class="govuk-!-margin-bottom-9">
         <h2 class="govuk-heading-m">Deliveries summary</h2>
