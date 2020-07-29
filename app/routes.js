@@ -57,6 +57,7 @@ router.post('/records/:nhsNumber/validate', function (req, res) {
     req.session.dobConfirmError = `Incorrect date of birth - try: 27 3 1945`
     res.redirect(`/records/${nhsNumber}/validate`)
   } else {
+    req.session.dobConfirmError = null
     res.redirect(`/records/${nhsNumber}/summary`)
   }
 })
