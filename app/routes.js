@@ -20,7 +20,7 @@ router.post('/find', function (req, res) {
 
   if (userData[nhsNumber]) {
     req.session.nhsNumberError = null
-    res.redirect(`/records/${nhsNumber}/summary`)
+    res.redirect(`/records/${nhsNumber}/validate`)
   }
 
   if (nhsNumber.length !== 10) {
@@ -30,6 +30,35 @@ router.post('/find', function (req, res) {
   }
 
   res.redirect('/home')
+})
+
+// Branching
+router.get('/records/:nhsNumber/validate', function (req, res) {
+  // Get the answer from session data
+  // The name between the quotes is the same as the 'name' attribute on the input elements
+  // However in JavaScript we can't use hyphens in variable names
+  const nhsNumber = req.params['nhsNumber']
+  const dobError = req.session.dobConfirmError
+
+  res.render('validate', { nhs_number: nhsNumber, error: dobError })
+})
+
+router.post('/records/:nhsNumber/validate', function (req, res) {
+  // Get the answer from session data
+  // The name between the quotes is the same as the 'name' attribute on the input elements
+  // However in JavaScript we can't use hyphens in variable names
+
+  const nhsNumber = req.params['nhsNumber']
+  const day = req.session.data['date-of-birth-day']
+  const month = req.session.data['date-of-birth-month']
+  const year = req.session.data['date-of-birth-year']
+
+  if (day !== '27' || month !== '3' || year !== '1945') {
+    req.session.dobConfirmError = `Incorrect date of birth - try: 27 3 1945`
+    res.redirect(`/records/${nhsNumber}/validate`)
+  } else {
+    res.redirect(`/records/${nhsNumber}/summary`)
+  }
 })
 
 // Branching
