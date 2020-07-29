@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Sign in - SVP Support Toolkit
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row govuk-!-margin-bottom-9">
+    <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-xl">Confirm account</h1>
+        <p>An access code has been sent to your email at <br /> <strong>{% if username %}{{ username }}{% else %}example@digital.cabinet-office.gov.uk{% endif %}</strong></p>
+
+
+        <form class="form" action="/home" method="post">
+
+            <div class="govuk-form-group">
+                <label class="govuk-label" for="access-code">
+                    6 digit access code
+                </label>
+                <input class="govuk-input govuk-input--width-20" id="access-code" name="access-code" type="text">
+            </div>
+
+            <button class="govuk-button" data-module="govuk-button">
+                Continue
+            </button>
+
+        </form>
+        <div>
+            <a href="#" class="govuk-link govuk-body">Send the email again</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
