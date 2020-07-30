@@ -6,7 +6,9 @@ module.exports = {
       name: 'Sarah Philips',
       dob: '5 January 1978',
       latestAddress: ['72 Guild Street', 'London', 'SE23 6FH'],
+      latestAddressLA: 'Lewisham',
       nhsAddress: ['72 GUILD ST, LONDON', 'SE23 6FH'],
+      nhsAddressLA: 'Lewisham',
       phone: '07700 900457',
       email: 'sarah.philips@example.com',
       text: [
@@ -146,8 +148,10 @@ module.exports = {
         '17 June 1946',
       latestAddress:
         ['105 Ravenhurst Street', 'Bordesley', 'Birmingham', 'B12 0HB'],
+      latestAddressLA: 'Birmingham city council',
       nhsAddress:
-        ['150 NEWHALL ST, BIRMINGHAM', 'B3 1RY'],
+        ['150 HIGH ST, TEWKESBURY', 'GL20 5JU'],
+      nhsAddressLA: 'Tewkesbury borough council',
       phone:
         '07486 900456',
       email:
@@ -381,8 +385,10 @@ module.exports = {
         '5th May 1965',
       latestAddress:
         ['1b Sheaf Street', 'Sheffield', 'S1 2BP'],
+      latestAddressLA: 'Sheffield city council',
       nhsAddress:
         ['1 SHEAF ST, SHEFFIELD', 'S1 2BP'],
+      nhsAddressLA: 'Sheffield city council',
       phone:
         '0114 272 9003',
       email:

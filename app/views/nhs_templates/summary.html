@@ -89,6 +89,17 @@ NHS: {{ summary.nhsNumber }} - SVP Support Toolkit
                 </div>
                 <div class="govuk-summary-list__row">
                     <dt class="govuk-summary-list__key">
+                        Local Authority
+                    </dt>
+                    <dd class="govuk-summary-list__value">
+                        {{ summary.latestAddressLA }}
+                        {% if summary.latestAddressLA != summary.nhsAddressLA %}
+                            <br /> {{ summary.nhsAddressLA }} (NHS address)
+                        {% endif %}
+                    </dd>
+                </div>
+                <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">
                         Contact details
                     </dt>
                     <dd class="govuk-summary-list__value">
