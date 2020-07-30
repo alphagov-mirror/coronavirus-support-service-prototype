@@ -56,26 +56,6 @@
 
             <table class="govuk-table">
                 <tbody class="govuk-table__body">
-                <tr class="govuk-table__row">
-                    <td class="govuk-table__cell">
-                        Is this person on the SPL?
-                    </td>
-                    <td class="govuk-table__cell">
-                        {% if spl.value %}
-                        <strong class="govuk-tag">
-                            Yes
-                        </strong>
-                        {% else %}
-                        <strong class="govuk-tag govuk-tag--grey">
-                            No
-                        </strong>
-                        {% endif %}
-                    </td>
-                    <td class="govuk-table__cell">
-                        {% if spl.action %}{{ spl.action }} <br/>{% endif %}
-                        {{ spl.date }}
-                    </td>
-                </tr>
 
                 <tr class="govuk-table__row">
                     <td class="govuk-table__cell">
