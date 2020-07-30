@@ -155,10 +155,14 @@ module.exports = {
       text:
         [
           'The user with the nhs number ending 3029... ',
+          '',
           'Is on the SPL - added 30/03/2010',
+          '',
           'Registered for supplies via webform on 30/05/2020',
+          '',
           'Had last delivery report Code 1: Successful on 25/07/2020',
           'Is not scheduled for future deliveries',
+          '',
           'Is included in the file sent to supermarkets',
           'Has been confirmed as matched by 3 supermarkets'
         ]
@@ -386,10 +390,14 @@ module.exports = {
       text:
         [
           'The user with the nhs number ending 5560... ',
+          '',
           'Is on the SPL - added 30/03/2020',
+          '',
           'Cancelled supplies via webform on 15/04/2020',
+          '',
           'Had last delivery report code 2: left on doorstep on 14/04/2020',
           'Is not scheduled for future deliveries',
+          '',
           'Is included in the file sent to supermarkets',
           'Has been confirmed as matched by 0 supermarkets'
         ]
