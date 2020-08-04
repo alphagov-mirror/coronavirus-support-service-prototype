@@ -130,4 +130,35 @@ router.get('/records/:nhsNumber/summary', function (req, res) {
   }
 })
 
+// Branching
+router.get('/records/:nhsNumber/summary/edit_phone_number', function (req, res) {
+  // Get the answer from session data
+  // The name between the quotes is the same as the 'name' attribute on the input elements
+  // However in JavaScript we can't use hyphens in variable names
+
+  const nhsNumber = req.params['nhsNumber']
+
+  const data = userData[nhsNumber]
+  if (data) {
+    res.render(`nhs_templates/summary_edit_phone`, data)
+  } else {
+    req.session.data.nhsNumberError = nhsNumber
+    res.redirect('/home')
+  }
+})
+
+// Branching
+router.post('/records/:nhsNumber/summary/edit_phone_number', function (req, res) {
+  // Get the answer from session data
+  // The name between the quotes is the same as the 'name' attribute on the input elements
+  // However in JavaScript we can't use hyphens in variable names
+
+  const nhsNumber = req.params['nhsNumber']
+
+  if (userData[nhsNumber]) {
+    userData[nhsNumber]['summary']['phone'] = req.body['phone-number']
+  }
+  res.redirect(`/records/${nhsNumber}/summary`)
+})
+
 module.exports = router

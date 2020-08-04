@@ -11,7 +11,10 @@ NHS: {{ summary.nhsNumber }} - SVP Support Toolkit
             <a class="govuk-breadcrumbs__link" href="/home">Home</a>
         </li>
         <li class="govuk-breadcrumbs__list-item">
-            <a class="govuk-breadcrumbs__link">NHS number: {{ summary.nhsNumber }}</a>
+            <a class="govuk-breadcrumbs__link" href="/records/{{ summary.nhsNumber }}/summary">NHS number: {{ summary.nhsNumber }}</a>
+        </li>
+        <li class="govuk-breadcrumbs__list-item">
+            <a class="govuk-breadcrumbs__link">Edit</a>
         </li>
     </ol>
 </div>
@@ -48,6 +51,7 @@ NHS: {{ summary.nhsNumber }} - SVP Support Toolkit
     </nav>
     <div class="govuk-grid-column-three-quarters">
 
+        <form action="/records/{{ summary.nhsNumber }}/summary/edit_phone_number" method="post">
         <section class="govuk-!-margin-bottom-9">
             <dl class="govuk-summary-list">
                 <div class="govuk-summary-list__row">
@@ -118,12 +122,11 @@ NHS: {{ summary.nhsNumber }} - SVP Support Toolkit
                         Phone number
                     </dt>
                     <dd class="govuk-summary-list__value">
-                        <p class="govuk-body">{{ summary.phone }}</p>
+                        <input class="govuk-input" id="phone-number" name="phone-number" type="text"
+                               value="{{ summary.phone }}" autofocus>
                     </dd>
                     <dd class="govuk-summary-list__actions">
-                        <a class="govuk-link" href="summary/edit_phone_number">
-                            Change<span class="govuk-visually-hidden"> phone number</span>
-                        </a>
+
                     </dd>
                 </div>
                 <div class="govuk-summary-list__row">
@@ -134,55 +137,19 @@ NHS: {{ summary.nhsNumber }} - SVP Support Toolkit
                         <p class="govuk-body">{{ summary.email }}</p>
                     </dd>
                     <dd class="govuk-summary-list__actions">
-                        <a class="govuk-link" href="summary/edit_email">
-                            Change<span class="govuk-visually-hidden"> email</span>
-                        </a>
+
                     </dd>
                 </div>
             </dl>
         </section>
+            <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button" type="submit">
+                Save and continue
+            </button>
 
-        <section class="govuk-!-margin-bottom-9">
-            <h2 class="govuk-heading-m">Shielded Patient status</h2>
-
-            <table class="govuk-table">
-                <tbody class="govuk-table__body">
-                <tr class="govuk-table__row">
-                    <td class="govuk-table__cell">
-                        Is this person on the SPL?
-                    </td>
-                    <td class="govuk-table__cell">
-                        {% if spl.value %}
-                        <strong class="govuk-tag">
-                            Yes
-                        </strong>
-                        {% else %}
-                        <strong class="govuk-tag govuk-tag--grey">
-                            No
-                        </strong>
-                        {% endif %}
-                    </td>
-                    <td class="govuk-table__cell">
-                        {% if spl.action %}{{ spl.action }} <br/>{% endif %}
-                        {{ spl.date }}
-                    </td>
-                </tr>
-                </tbody>
-            </table>
-        </section>
-
-        <section class="govuk-!-margin-bottom-9">
-            <h2 class="govuk-heading-m">Summary</h2>
-            <span id="record-summary-hint" class="govuk-hint">
-                This quick summary can be used to attach to support tickets.
-              </span>
-            <textarea class="govuk-textarea"
-                      id="record-summary"
-                      name="record-summary"
-                      rows="12"
-                      aria-describedby="record-summary-hint">{% for line in summary.text %}{{ line }}{% if not loop.last %}&#13;&#10;{% endif %}{% endfor %}
-            </textarea>
-        </section>
+            <a href="/records/{{ summary.nhsNumber }}/summary" class="govuk-button govuk-button--secondary" data-module="govuk-button">
+                Cancel
+            </a>
+        <form>
     </div>
 </div>
 
