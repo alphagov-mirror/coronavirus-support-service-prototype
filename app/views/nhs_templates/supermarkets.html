@@ -95,6 +95,9 @@
                 </tr>
                 </tbody>
             </table>
+            {% if not supermarkets.registered.value %}
+            <a class="govuk-link govuk-link--no-visited-state" href="supermarkets/register">Register this person with supermarkets now</a>
+            {% endif %}
         </section>
 
         <section class="govuk-!-margin-bottom-9">

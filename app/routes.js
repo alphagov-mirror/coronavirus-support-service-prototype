@@ -1,5 +1,6 @@
 const express = require('express')
-const userData = require('./user_data')
+const getDefaultData = require('./user_data')
+var userData = getDefaultData()
 const router = express.Router()
 
 // Add your routes here - above the module.exports line
@@ -133,8 +134,6 @@ router.get('/records/:nhsNumber/summary', function (req, res) {
 // Branching
 router.get('/records/:nhsNumber/summary/edit_phone_number', function (req, res) {
   // Get the answer from session data
-  // The name between the quotes is the same as the 'name' attribute on the input elements
-  // However in JavaScript we can't use hyphens in variable names
 
   const nhsNumber = req.params['nhsNumber']
 
@@ -150,8 +149,6 @@ router.get('/records/:nhsNumber/summary/edit_phone_number', function (req, res) 
 // Branching
 router.post('/records/:nhsNumber/summary/edit_phone_number', function (req, res) {
   // Get the answer from session data
-  // The name between the quotes is the same as the 'name' attribute on the input elements
-  // However in JavaScript we can't use hyphens in variable names
 
   const nhsNumber = req.params['nhsNumber']
 
@@ -159,6 +156,72 @@ router.post('/records/:nhsNumber/summary/edit_phone_number', function (req, res)
     userData[nhsNumber]['summary']['phone'] = req.body['phone-number']
   }
   res.redirect(`/records/${nhsNumber}/summary`)
+})
+
+// Branching
+router.get('/records/:nhsNumber/summary/edit_email', function (req, res) {
+  // Get the answer from session data
+
+  const nhsNumber = req.params['nhsNumber']
+
+  const data = userData[nhsNumber]
+  if (data) {
+    res.render(`nhs_templates/summary_edit_email`, data)
+  } else {
+    req.session.data.nhsNumberError = nhsNumber
+    res.redirect('/home')
+  }
+})
+
+// Branching
+router.post('/records/:nhsNumber/summary/edit_email', function (req, res) {
+  // Get the answer from session data
+
+  const nhsNumber = req.params['nhsNumber']
+
+  if (userData[nhsNumber]) {
+    userData[nhsNumber]['summary']['email'] = req.body['email']
+  }
+  res.redirect(`/records/${nhsNumber}/summary`)
+})
+
+
+// Branching
+router.get('/records/:nhsNumber/supermarkets/register', function (req, res) {
+  // Get the answer from session data
+
+  const nhsNumber = req.params['nhsNumber']
+
+  const data = userData[nhsNumber]
+  if (data) {
+    res.render(`nhs_templates/supermarkets_register`, data)
+  } else {
+    req.session.data.nhsNumberError = nhsNumber
+    res.redirect('/home')
+  }
+})
+
+router.post('/records/:nhsNumber/supermarkets/register', function (req, res) {
+  // Get the answer from session data
+
+  const nhsNumber = req.params['nhsNumber']
+
+  if (userData[nhsNumber]) {
+    userData[nhsNumber].supermarkets.registered = {
+      value: true,
+      action: 'Support tool',
+      date: 'Today'
+    }
+    userData[nhsNumber].supermarkets.inFile = true
+  }
+  res.redirect(`/records/${nhsNumber}/supermarkets`)
+})
+
+router.get('/clear-data', function (req, res) {
+  // Get the answer from session data
+
+  userData = getDefaultData()
+  res.redirect('/home')
 })
 
 module.exports = router

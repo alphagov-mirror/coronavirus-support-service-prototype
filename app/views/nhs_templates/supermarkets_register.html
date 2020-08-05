@@ -1,0 +1,144 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+{{ summary.nhsNumber }} - Supermarkets
+{% endblock %}
+
+{% block beforeAppContent %}
+<div class="govuk-breadcrumbs">
+    <ol class="govuk-breadcrumbs__list">
+        <li class="govuk-breadcrumbs__list-item">
+            <a class="govuk-breadcrumbs__link" href="/home">Home</a>
+        </li>
+        <li class="govuk-breadcrumbs__list-item">
+            <a class="govuk-breadcrumbs__link" href="summary">NHS number: {{ summary.nhsNumber }}</a>
+        </li>
+        <li class="govuk-breadcrumbs__list-item">
+            <a class="govuk-breadcrumbs__link">Supermarkets</a>
+        </li>
+    </ol>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-one-quarter">
+        &nbsp;
+    </div>
+    <div class="govuk-grid-column-three-quarters">
+        <h1 class="govuk-heading-xl">
+            <span class="govuk-caption-xl">Supermarket matches</span>
+            NHS: {{summary.nhsNumber }}
+        </h1>
+    </div>
+</div>
+<div class="govuk-grid-row">
+    <nav class="govuk-grid-column-one-quarter">
+        <ul class="govuk-list">
+            <li>
+                <a class="govuk-link" href="/records/{{ summary.nhsNumber }}/summary">Summary</a>
+            </li>
+            <li>
+                Supermarkets
+            </li>
+            <li>
+                <a class="govuk-link" href="/records/{{ summary.nhsNumber }}/deliveries">Deliveries</a>
+            </li>
+            <li>
+                <a class="govuk-link" href="/records/{{ summary.nhsNumber }}/timeline">Timeline</a>
+            </li>
+        </ul>
+    </nav>
+    <div class="govuk-grid-column-three-quarters">
+
+        <section class="govuk-!-margin-bottom-9">
+            <h2 class="govuk-heading-m">Check details</h2>
+
+            <p class="govuk-body">The following details will be sent to supermarkets to try and match to their customer
+                database. It is important they are as accurate as possible to get a good match</p>
+
+            <a class="govuk-body">Change details on the <a class="govuk-link govuk-body" href="/records/{{ summary.nhsNumber }}/summary">Summary page</a> </p>
+
+                {% if not summary.email %}
+                <div class="govuk-warning-text">
+                    <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+                    <strong class="govuk-warning-text__text">
+                        <span class="govuk-warning-text__assistive">Warning</span>
+                        This record is missing an email making it less likely to be matched
+                    </strong>
+                </div>
+                {% endif %}
+            <dl class="govuk-summary-list">
+                <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">
+                        Name
+                    </dt>
+                    <dd class="govuk-summary-list__value">
+                        {{ summary.name }}
+                    </dd>
+                    <dd class="govuk-summary-list__actions">
+
+                    </dd>
+                </div>
+                <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">
+                        Date of birth
+                    </dt>
+                    <dd class="govuk-summary-list__value">
+                        {{ summary.dob }}
+                    </dd>
+
+                    <dd class="govuk-summary-list__actions">
+
+                    </dd>
+                </div>
+                <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">
+                        Latest address
+                    </dt>
+                    <dd class="govuk-summary-list__value">
+                        {% for line in summary.latestAddress %}
+                        {{ line }}{% if not loop.last %}<br/>{% endif %}
+                        {% endfor %}
+                    </dd>
+                    <dd class="govuk-summary-list__actions">
+
+                    </dd>
+                </div>
+                <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">
+                        Phone number
+                    </dt>
+                    <dd class="govuk-summary-list__value">
+                        <p class="govuk-body">{{ summary.phone }}</p>
+                    </dd>
+                    <dd class="govuk-summary-list__actions">
+                    </dd>
+                </div>
+                <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">
+                        E-mail
+                    </dt>
+                    <dd class="govuk-summary-list__value">
+                        <p class="govuk-body">{{ summary.email }}</p>
+                    </dd>
+                    <dd class="govuk-summary-list__actions">
+                    </dd>
+                </div>
+            </dl>
+
+        </section>
+        <form method="post" action="register">
+        <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button" type="submit">
+            Register
+        </button>
+
+        <a href="/records/{{ summary.nhsNumber }}/supermarkets" class="govuk-button govuk-button--secondary" data-module="govuk-button">
+            Cancel
+        </a>
+        <form>
+
+    </div>
+</div>
+
+{% endblock %}
