@@ -98,23 +98,6 @@ router.get('/records/:nhsNumber/timeline', function (req, res) {
 })
 
 // Branching
-router.get('/records/:nhsNumber/deliveries', function (req, res) {
-  // Get the answer from session data
-  // The name between the quotes is the same as the 'name' attribute on the input elements
-  // However in JavaScript we can't use hyphens in variable names
-
-  const nhsNumber = req.params['nhsNumber']
-
-  const data = userData[nhsNumber]
-  if (data) {
-    res.render(`nhs_templates/deliveries`, data)
-  } else {
-    req.session.data.nhsNumberError = nhsNumber
-    res.redirect('/home')
-  }
-})
-
-// Branching
 router.get('/records/:nhsNumber/summary', function (req, res) {
   // Get the answer from session data
   // The name between the quotes is the same as the 'name' attribute on the input elements
