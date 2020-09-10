@@ -56,7 +56,7 @@
 
                 <tr class="govuk-table__row">
                     <td class="govuk-table__cell">
-                        Has this person ever registered for supermarket priority slots?
+                        Is this person registered?
                     </td>
                     <td class="govuk-table__cell">
                         {% if supermarkets.registered.value %}
@@ -72,22 +72,6 @@
                     <td class="govuk-table__cell">
                         {% if supermarkets.registered.action %}{{ supermarkets.registered.action }} <br/>{% endif %}
                         {{ supermarkets.registered.date }}
-                    </td>
-                </tr>
-                <tr class="govuk-table__row">
-                    <td class="govuk-table__cell">
-                        Is this person in the file sent to supermarkets?
-                    </td>
-                    <td class="govuk-table__cell">
-                        {% if supermarkets.inFile %}
-                        <strong class="govuk-tag">
-                            Yes
-                        </strong>
-                        {% else %}
-                        <strong class="govuk-tag govuk-tag--grey">
-                            No
-                        </strong>
-                        {% endif %}
                     </td>
                 </tr>
                 </tbody>

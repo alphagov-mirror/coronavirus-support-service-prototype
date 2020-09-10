@@ -34,6 +34,7 @@ function getDefaultData () {
           description: 'Added to the shielded patient list',
           badges: [],
           eventDetails: [
+            { field: 'SPL Source', value: 'Initial SPL' },
             { field: 'Address', value: '72 GUILD ST, LONDON' },
             { field: 'Postcode', value: 'SE23 6FH' }
           ]
@@ -112,11 +113,12 @@ function getDefaultData () {
       },
       timeline: [
         {
-          date: '12/03/2020',
+          date: '12/08/2020',
           event: 'Added to SPL',
           description: 'Added to the shielded patient list',
           badges: [],
           eventDetails: [
+            { field: 'SPL Source', value: 'GP WEEKLY UPDATE' },
             { field: 'Address', value: '58 LEICESTER RD, WIGSTON' },
             { field: 'Postcode', value: 'LE18 1DR' }
           ]
@@ -163,6 +165,7 @@ function getDefaultData () {
           description: 'Added to the shielded patient list',
           badges: [],
           eventDetails: [
+            { field: 'SPL Source', value: 'Initial SPL' },
             { field: 'Address', value: '150 HIGH ST, TEWKESBURY' },
             { field: 'Postcode', value: 'GL20 5JU' }
           ]
@@ -214,15 +217,15 @@ function getDefaultData () {
         phone: '0114 272 9003',
         email:
           'shillpa.chaghanti@example.com',
-        deceased: false,
-        dod: ''
+        deceased: true,
+        dod: '14th Sept 2020'
       },
       spl: {
         value: false,
         action:
           'Removed',
         date:
-          '30/03/2020'
+          '14/09/2020'
       },
       supermarkets: {
         registered: {
@@ -241,6 +244,7 @@ function getDefaultData () {
           description: 'Added to SPL',
           badge: null,
           eventDetails: [
+            { field: 'SPL Source', value: 'Initial SPL' },
             { field: 'Address', value: '1 SHEAF ST, SHEFFIELD' },
             { field: 'Postcode', value: 'S1 2BP' }
           ]

@@ -46,6 +46,7 @@ NHS: {{ summary.nhsNumber }} - SVP Support Toolkit
     <div class="govuk-grid-column-three-quarters">
 
         <section class="govuk-!-margin-bottom-9">
+            {% if summary.deceased %}<p><strong class="govuk-tag">Deceased</strong></p>{% endif %}
             <dl class="govuk-summary-list">
                 <div class="govuk-summary-list__row">
                     <dt class="govuk-summary-list__key">
@@ -70,6 +71,20 @@ NHS: {{ summary.nhsNumber }} - SVP Support Toolkit
 
                     </dd>
                 </div>
+                {% if summary.deceased  %}
+                <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">
+                        Date of death
+                    </dt>
+                    <dd class="govuk-summary-list__value">
+                        {{ summary.dod}}
+                    </dd>
+
+                    <dd class="govuk-summary-list__actions">
+
+                    </dd>
+                </div>
+                {% endif %}
                 <div class="govuk-summary-list__row">
                     <dt class="govuk-summary-list__key">
                         Latest address
