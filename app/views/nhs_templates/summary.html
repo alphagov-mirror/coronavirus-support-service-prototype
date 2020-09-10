@@ -167,19 +167,6 @@ NHS: {{ summary.nhsNumber }} - SVP Support Toolkit
                 </tbody>
             </table>
         </section>
-
-        <section class="govuk-!-margin-bottom-9">
-            <h2 class="govuk-heading-m">Summary</h2>
-            <span id="record-summary-hint" class="govuk-hint">
-                This quick summary can be used to attach to support tickets.
-              </span>
-            <textarea class="govuk-textarea"
-                      id="record-summary"
-                      name="record-summary"
-                      rows="12"
-                      aria-describedby="record-summary-hint">{% for line in summary.text %}{{ line }}{% if not loop.last %}&#13;&#10;{% endif %}{% endfor %}
-            </textarea>
-        </section>
     </div>
 </div>
 
