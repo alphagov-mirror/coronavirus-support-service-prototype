@@ -130,4 +130,19 @@ router.get('/records/:nhsNumber/summary', function (req, res) {
   }
 })
 
+router.get('/uploads', function (req, res) {
+  res.render(`uploads/uploads`)
+
+})
+
+router.get('/uploads/care-provision', function (req, res) {
+
+
+})
+
+router.get('/uploads/care-provision/submit', function (req, res) {
+
+
+})
+
 module.exports = router

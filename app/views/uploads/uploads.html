@@ -1,0 +1,112 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Data reporting
+{% endblock %}
+
+{% block beforeAppContent %}
+<div class="govuk-breadcrumbs">
+    <ol class="govuk-breadcrumbs__list">
+        <li class="govuk-breadcrumbs__list-item">
+            <a class="govuk-breadcrumbs__link" href="/home">Home</a>
+        </li>
+        <li class="govuk-breadcrumbs__list-item">
+            <a class="govuk-breadcrumbs__link">Data reporting</a>
+        </li>
+    </ol>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-one-quarter">
+        &nbsp;
+    </div>
+    <div class="govuk-grid-column-three-quarters">
+        <div class="govuk-warning-text">
+            <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+            <strong class="govuk-warning-text__text">
+                <span class="govuk-warning-text__assistive">Warning</span>
+                Uploads is located as part of the support tool for prototype convenience
+            </strong>
+        </div>
+    </div>
+</div><div class="govuk-grid-row">
+    <div class="govuk-grid-column-one-quarter">
+        &nbsp;
+    </div>
+    <div class="govuk-grid-column-three-quarters">
+        <h1 class="govuk-heading-xl">Data reporting
+        </h1>
+    </div>
+</div>
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-one-quarter">
+        &nbsp;
+    </div>
+    <div class="govuk-grid-column-three-quarters">
+
+        <section  class="govuk-!-margin-bottom-9">
+
+
+            <h2 class="govuk-heading-m">Updates required</h2>
+            <ul class="govuk-list">
+                <li class="govuk-list--bullet">Care provision - 26th Sept to 3rd October</li>
+            </ul>
+        </section>
+        <section>
+
+
+
+            <h3 class="govuk-heading-m">Reports</h3>
+            <table class="govuk-table">
+                <thead class="govuk-table__header">
+                    <tr class="govuk-table__row">
+                        <th scope="col" class="govuk-table__header">Title</th>
+                        <th scope="col" class="govuk-table__header">Last updated</th>
+                    </tr>
+                </thead>
+                <tbody class="govuk-table__body">
+                <tr class="govuk-table__row">
+                    <td class="govuk-table__cell">
+                        Care provision
+                    </td>
+                    <td class="govuk-table__cell">
+                        25/09/2020
+                    </td>
+                    <td class="govuk-table__cell">
+                        <a class="govuk-link" href="/home/uploads/care-provision">View</a>
+                    </td>
+                </tr>
+                <tr class="govuk-table__row">
+                    <td class="govuk-table__cell">
+                        Local care needs
+                    </td>
+                    <td class="govuk-table__cell">
+                        25/09/2020
+                    </td>
+                    <td class="govuk-table__cell">
+                        <a class="govuk-link" href="/home/uploads/care-provision">View</a>
+                    </td>
+                </tr>
+                <tr class="govuk-table__row">
+                    <td class="govuk-table__cell">
+                        Local SPL contact report
+                    </td>
+                    <td class="govuk-table__cell">
+                        25/09/2020
+                    </td>
+                    <td class="govuk-table__cell">
+                        <a class="govuk-link" href="/home/uploads/care-provision">View</a>
+                    </td>
+                </tr>
+
+                </tbody>
+            </table>
+
+        </section>
+
+    </div>
+</div>
+
+{% endblock %}
